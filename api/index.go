@@ -35,6 +35,7 @@ func handler() http.HandlerFunc {
 		return ctx.JSON(fiber.Map{
 			"uri":  ctx.Request().URI().String(),
 			"path": ctx.Path(),
+			"name": "Junior Duarte",
 		})
 	})
 
