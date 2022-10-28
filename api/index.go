@@ -1,19 +1,22 @@
-package api
+package handler
 
 import (
+	"net/http"
+
+	"github.com/gofiber/adaptor/v2"
 	"github.com/gofiber/fiber/v2"
 )
 
 // Handler is the main entry point of the application. Think of it like the main() method
-// func Handler(w http.ResponseWriter, r *http.Request) {
-// 	// This is needed to set the proper request path in `*fiber.Ctx`
-// 	r.RequestURI = r.URL.String()
+func Handler(w http.ResponseWriter, r *http.Request) {
+	// This is needed to set the proper request path in `*fiber.Ctx`
+	r.RequestURI = r.URL.String()
 
-// 	handler().ServeHTTP(w, r)
-// }
+	handler().ServeHTTP(w, r)
+}
 
 // building the fiber application
-func API() {
+func handler() http.HandlerFunc {
 	app := fiber.New()
 
 	app.Get("/v1", func(ctx *fiber.Ctx) error {
@@ -35,5 +38,5 @@ func API() {
 		})
 	})
 
-	// return adaptor.FiberApp(app)
+	return adaptor.FiberApp(app)
 }
