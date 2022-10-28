@@ -1,4 +1,4 @@
-module go-api-fiber-example
+module go-api-fiber-vercel-example
 
 go 1.18
 
